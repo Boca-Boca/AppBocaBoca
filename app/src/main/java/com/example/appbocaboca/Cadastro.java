@@ -219,3 +219,6 @@ public class Cadastro extends AppCompatActivity {
 
     }
 }
+
+
+//Ruan 123

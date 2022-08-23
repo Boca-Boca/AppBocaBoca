@@ -98,8 +98,8 @@
         android:id="@+id/googleLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tem_conta">
+        android:layout_below="@+id/tem_conta"
+        android:layout_centerHorizontal="true">
 
     </com.google.android.gms.common.SignInButton>
 </RelativeLayout>

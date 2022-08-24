@@ -14,7 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -30,6 +34,14 @@ public class Login extends AppCompatActivity {
     EditText Email, Senha;
     TextView naotemconta;
      Button loginbtn;
+    SignInButton mGoogleLoginBtn;
+
+
+    private static final int RC_SIGN_IN = 100 ;
+    GoogleSignInClient mGoogleSignInClient;
+
+
+
      //Declarando instancia do Firebase
     private FirebaseAuth mAuth;
 
@@ -47,6 +59,14 @@ ProgressDialog pd;
         actionBar.setTitle("Entrar");
 
 
+
+            // Configuração do google sign in
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
+
         //Inicializando uma instancia do Firebase
         mAuth = FirebaseAuth.getInstance();
 
@@ -58,6 +78,18 @@ ProgressDialog pd;
         Senha = findViewById(R.id.senhaEt);
         naotemconta= findViewById((R.id.nao_tem_conta));
         loginbtn = findViewById(R.id.btnlogin);
+        mGoogleLoginBtn = findViewById(R.id.googleLoginBtn);
+
+
+
+        // Lidando com o botão do google
+        mGoogleLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent,RC_SIGN_IN);
+            }
+        });
 
 
         //Clique do botao Login
@@ -142,6 +174,8 @@ ProgressDialog pd;
         onBackPressed(); //Ir para atividade anterior
         return super.onSupportNavigateUp();
     }
+
+
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 

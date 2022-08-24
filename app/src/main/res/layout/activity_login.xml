@@ -50,32 +50,29 @@
         android:id="@+id/senhaTIL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/emailTIL"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true">/>
 
 
         <!-- Botão do google-->
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googleLoginBtn"
-            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnlogin"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:textAlignment="center">
 
-        <EditText
-            android:id="@+id/senhaEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Senha"
-            android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-
+            <EditText
+                android:id="@+id/senhaEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Senha"
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
         </com.google.android.gms.common.SignInButton>

@@ -57,15 +57,6 @@
         app:passwordToggleEnabled="true">
 
 
-        <EditText
-            android:id="@+id/senhaEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Senha"
-            android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
-
         <!-- Botão do google-->
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googleLoginBtn"
@@ -75,6 +66,17 @@
             android:layout_above="@+id/btnlogin"
             android:layout_centerhorizontal="true"
             android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/senhaEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Senha"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
 
 
         </com.google.android.gms.common.SignInButton>

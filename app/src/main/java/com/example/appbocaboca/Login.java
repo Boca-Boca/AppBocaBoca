@@ -14,12 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class Login extends AppCompatActivity {
 //Sempre declara o componente primeiro depois referencia/intancia
@@ -140,6 +143,36 @@ ProgressDialog pd;
         return super.onSupportNavigateUp();
     }
 
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
+        //here the acct.getIdToken() is null
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(Login.this, "Cadastrado" + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            // Vai para o perfil ativo depois de logar
+                            startActivity(new Intent(Login.this, Perfil.class));
+                            finish();
+                            // updateUI(user);
+                        } else {
+                            Toast.makeText(Login.this, "Erro no Login", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Mostrar erro de mensagem
+                        Toast.makeText(Login.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }
 

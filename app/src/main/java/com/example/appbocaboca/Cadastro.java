@@ -29,6 +29,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -133,6 +137,38 @@ public class Cadastro extends AppCompatActivity {
 
                          progressDialog.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //Pegar o email do usuario e o Uid pela autenticacao
+
+                        String email = user.getEmail();
+
+                        String uid = user.getUid();
+
+                        //Quando o usuario e registrado armazenar as info no firebase realtime database tambem
+                            //Usando Hashmap
+                            HashMap<Object, String> hashMap= new HashMap<>();
+                            //Colocando informacoes no hashmap
+                            hashMap.put("email", email);
+                            hashMap.put("uid", uid);
+                            hashMap.put("nome","" );   //vai adicionar depois
+                            hashMap.put("telefone", "");//vai adicionar depois
+                            hashMap.put("imagem", "");//vai adicionar depois
+
+
+                            //Intancia do Firebase database
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                            //Caminho pro armazenamento de dados do usuario chamado "Users"
+
+                            DatabaseReference reference = database.getReference("Users");
+
+
+                            //colocar os dados no hashmap e no banco(database)
+                            reference.child(uid).setValue(hashMap);
+
+
+
                             Toast.makeText(Cadastro.this, "Cadastrado...\n"+user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Cadastro.this, Perfil.class));
                             finish();
@@ -198,7 +234,7 @@ public class Cadastro extends AppCompatActivity {
                         if (!task.isSuccessful()) {
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Cadastro.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Cadastro.this, "Cadastrado"+user.getEmail(), Toast.LENGTH_SHORT).show();
                             // Vai para o perfil ativo depois de logar
                             startActivity(new Intent(Cadastro.this, Perfil.class));
                             finish();
@@ -221,4 +257,3 @@ public class Cadastro extends AppCompatActivity {
 }
 
 
-//Ruan 123

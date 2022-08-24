@@ -64,7 +64,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnlogin"
-            android:layout_centerhorizontal="true"
             android:layout_marginTop="20dp">
 
         <EditText

@@ -79,7 +79,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:backgroundTint="#12615A"
-        android:text="@string/cadastrar" />
+        android:text="cadastrar" />
 
     <!--Clique para ir para a atividade de Login se ja tiver uma conta-->
     <TextView
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnCadastrar"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:text="Já tem uma conta? Entrar"
         android:textAlignment="center"
         android:textColor="@color/black" />
@@ -102,5 +102,4 @@
         android:layout_centerHorizontal="true">
 
     </com.google.android.gms.common.SignInButton>
-
 </RelativeLayout>

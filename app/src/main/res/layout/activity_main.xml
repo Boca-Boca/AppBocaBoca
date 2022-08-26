@@ -16,7 +16,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="151dp"
-        android:layout_height="377dp"
+        android:layout_height="347dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="126dp"
@@ -54,7 +54,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="261dp"
+        android:layout_marginBottom="211dp"
         android:backgroundTint="#12615A"
         android:drawableLeft="@drawable/accounticon"
         android:drawablePadding="5dp"

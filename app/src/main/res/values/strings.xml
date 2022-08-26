@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">AppBocaBoca</string>
-    <string name="cadastrar">Cadastrar</string>
+    <string name="login">Login</string>
     <string name="cadastro">Cadastro</string>
     <string name="email">Email</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cadastrar" />
 </resources>

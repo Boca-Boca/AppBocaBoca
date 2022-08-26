@@ -106,13 +106,13 @@ public class Cadastro extends AppCompatActivity {
                 }
             }
 
-
         });
         //Lidando se o usuario ja tiver conta no cadastro
         tem_conta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                startActivity(new Intent(Cadastro.this,Login.class ));
+               finish();
             }
         });
     // Lidando com o botão do google

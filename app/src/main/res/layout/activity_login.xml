@@ -9,8 +9,9 @@
     tools:context=".Login">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:id="@+id/logo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
         android:src="@drawable/logo" />
@@ -30,10 +31,11 @@
         android:id="@+id/emailTIL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
-
-
+        >
         <EditText
             android:id="@+id/emailEt"
             android:layout_width="match_parent"
@@ -53,7 +55,7 @@
         android:layout_below="@+id/emailTIL"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"
-        app:passwordToggleEnabled="true">/>
+        app:passwordToggleEnabled="true">
 
 
         <!-- Botão do google-->
@@ -65,17 +67,17 @@
             android:layout_marginTop="20dp"
             android:textAlignment="center">
 
-            <EditText
-                android:id="@+id/senhaEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:hint="Senha"
-                android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
-
 
         </com.google.android.gms.common.SignInButton>
+
+        <EditText
+            android:id="@+id/senhaEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Senha"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,6 +93,16 @@
         android:backgroundTint="#12615A"
         android:text="Entrar" />
 
+    <!--TextView: Esqueci a senha-->
+    <TextView
+        android:id="@id/esqueceuSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnlogin"
+        android:text="Esqueci a minha Senha!"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack" />
+
     <!--Clique para ir para a atividade de Cadastro se não tiver uma conta-->
     <TextView
 
@@ -102,8 +114,5 @@
         android:text="Não tem uma conta? Cadastrar"
         android:textAlignment="center"
         android:textColor="@color/black" />
-
-
-
 
 </RelativeLayout>

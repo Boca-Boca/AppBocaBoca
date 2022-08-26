@@ -1,5 +1,11 @@
 package com.example.appbocaboca;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.InputType;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +13,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +44,7 @@ public class Login extends AppCompatActivity {
 //Sempre declara o componente primeiro depois referencia/intancia
     //Views/Componentes
     EditText Email, Senha;
-    TextView naotemconta;
+    TextView naotemconta, esqueciSenha;
      Button loginbtn;
     SignInButton mGoogleLoginBtn;
 
@@ -82,6 +89,7 @@ ProgressDialog pd;
         Email = findViewById(R.id.emailEt);
         Senha = findViewById(R.id.senhaEt);
         naotemconta= findViewById((R.id.nao_tem_conta));
+        esqueciSenha=findViewById((R.id.esqueceuSenha));
         loginbtn = findViewById(R.id.btnlogin);
         mGoogleLoginBtn = findViewById(R.id.googleLoginBtn);
 
@@ -124,10 +132,88 @@ ProgressDialog pd;
             startActivity(new Intent(Login.this,Cadastro.class));
             }
         });
+
+        //recuperação da senha
+        esqueciSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showRecoverPasswordDialog();
+            }
+        });
+
+        pd=new ProgressDialog(this);
+
+    }
+
+    private void showRecoverPasswordDialog() {
+        //Alerta do dialogo
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Recuperar a senha!");
+
+        //set layout linear layout
+        LinearLayout linearLayout = new LinearLayout(this);
+        // views setadas no dialogo
+        EditText emailEt = new EditText(this);
+        emailEt.setHint("Email");
+        emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        emailEt.setMinEms(16);
+
+        linearLayout.addView(emailEt);
+        linearLayout.setPadding(10,10,10,10);
+
+        builder.setView(linearLayout);
+
+        //Butoes
+        builder.setPositiveButton("Recuperar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //input email
+                String email = emailEt.getText().toString().trim();
+                beginRecovery(email);
+            }
+        });
+        //Butoes cancelar
+        builder.setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //dialogo cancel
+                dialogInterface.dismiss();
+            }
+        });
+
+        //mostrar o dialogo
+        builder.create().show();
+    }
+
+    private void beginRecovery(String email) {
+        //Mostrar progress dialog
+        pd.setMessage("Enviando email...");
+        pd.show();
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                pd.dismiss();
+                if(task.isSuccessful()){
+                    Toast.makeText(Login.this, "Email enviado", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(Login.this, "Error...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                //Mostrando a propriedade do error
+                Toast.makeText(Login.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loginUser(String email, String senha) {
     //Mostrar progress dialog
+        pd.setMessage("Entrando...");
+        pd.show();
         mAuth.signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -180,7 +266,6 @@ ProgressDialog pd;
         return super.onSupportNavigateUp();
     }
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode , Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
@@ -198,8 +283,6 @@ ProgressDialog pd;
         }
 
     }
-
-
 
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {

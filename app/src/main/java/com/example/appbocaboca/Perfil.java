@@ -1,23 +1,24 @@
 package com.example.appbocaboca;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Perfil extends AppCompatActivity {
+public class Perfil<selectedListener> extends AppCompatActivity {
 
     //Firebase authentication
     FirebaseAuth firebaseAuth ;
-
+    ActionBar actionBar;
 
     //Views/componentes
     TextView perfil;
@@ -26,8 +27,8 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-
         ActionBar actionBar = getSupportActionBar();
+         actionBar = getSupportActionBar();
         actionBar.setTitle("Perfil");
 
 
@@ -35,6 +36,7 @@ public class Perfil extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
             //init views/instanciando/ referenciando componentes
+
 
     perfil =findViewById(R.id.Perfil);
 
@@ -53,7 +55,9 @@ public class Perfil extends AppCompatActivity {
             //usuário está conectado fique aqui!
 
             // mudando email de usuario logado
+
             perfil.setText(user.getEmail());
+
 
         }else{
             //usuario nao conectado , ir para atividadeprincipal>Menu

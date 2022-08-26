@@ -6,6 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +26,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -262,6 +266,23 @@ ProgressDialog pd;
         return super.onSupportNavigateUp();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode , Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode==RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(intent);
+            try{
+                GoogleSignInAccount conta = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle (conta);
+
+            }catch (ApiException exception){
+                Toast.makeText(Login.this, "Nenhum usuário Google logado no aparelho.",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        }
+
+    }
 
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {

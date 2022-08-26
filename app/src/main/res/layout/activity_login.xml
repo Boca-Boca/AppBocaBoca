@@ -11,7 +11,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
-        android:layout_height="117dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
         android:src="@drawable/logo" />
@@ -33,9 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
         >
-
-
         <EditText
             android:id="@+id/emailEt"
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
     <!-- Editar o input de senha-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/senhaTIL"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailTIL"
         android:layout_centerInParent="true"
@@ -112,9 +112,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="33dp"
+        android:layout_below="@id/btnlogin"
         android:text="Não tem uma conta? Cadastrar"
         android:textAlignment="center"
         android:textColor="@color/black" />
-
 
 </RelativeLayout>

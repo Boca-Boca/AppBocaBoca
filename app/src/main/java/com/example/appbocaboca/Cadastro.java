@@ -105,6 +105,7 @@ public class Cadastro extends AppCompatActivity {
                     registerUser(email,senha);
                 }
             }
+
         });
         //Lidando se o usuario ja tiver conta no cadastro
         tem_conta.setOnClickListener(new View.OnClickListener() {

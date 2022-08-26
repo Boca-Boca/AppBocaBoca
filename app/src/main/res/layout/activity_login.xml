@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009688"
+    android:padding="20dp"
+    tools:context=".Login">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="117dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:src="@drawable/logo" />
+
+    <!-- TextView : Label de Cadastro-->
+
+    <!-- TextView : Editando o Texto : Input email-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/emailTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="20dp"
+        >
+
+
+        <EditText
+            android:id="@+id/emailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Editar o input de senha-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/senhaTIL"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailTIL"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        app:passwordToggleEnabled="true">
+
+
+        <!-- Botão do google-->
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/googleLoginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnlogin"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center">
+
+
+        </com.google.android.gms.common.SignInButton>
+
+        <EditText
+            android:id="@+id/senhaEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Senha"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Editar Botao de Cadastro-->
+    <Button
+        android:id="@+id/btnlogin"
+        style="@style/Base.CardView"
+        android:layout_width="131dp"
+        android:layout_height="69dp"
+        android:layout_below="@+id/senhaTIL"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#12615A"
+        android:text="Entrar" />
+
+    <!--TextView: Esqueci a senha-->
+    <TextView
+        android:id="@id/esqueceuSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnlogin"
+        android:text="Esqueci a minha Senha!"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack" />
+
+    <!--Clique para ir para a atividade de Cadastro se não tiver uma conta-->
+    <TextView
+
+        android:id="@+id/nao_tem_conta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="33dp"
+        android:text="Não tem uma conta? Cadastrar"
+        android:textAlignment="center"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

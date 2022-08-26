@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppBocaBoca</string>
+    <string name="login">Login</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="email">Email</string>
+    <string name="cadastrar" />
+</resources>

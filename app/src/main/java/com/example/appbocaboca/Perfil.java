@@ -9,7 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,7 +21,7 @@ public class Perfil extends AppCompatActivity {
 
     //Firebase authentication
     FirebaseAuth firebaseAuth ;
-
+    ActionBar actionBar;
 
     //Views/componentes
     TextView perfil;
@@ -27,7 +31,7 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        ActionBar actionBar = getSupportActionBar();
+         actionBar = getSupportActionBar();
         actionBar.setTitle("Perfil");
 
 
@@ -36,11 +40,62 @@ public class Perfil extends AppCompatActivity {
 
             //init views/instanciando/ referenciando componentes
 
-    perfil =findViewById(R.id.Perfil);
+        //botao de navegacao
+        BottomNavigationView navegationView = findViewById(R.id.navigation);
+            navegationView.setOnNavigationItemSelectedListener(selectedListener);
+
+
+            //Transação do Botao HOME como DEFAULT
+        actionBar.setTitle("Home");
+        HomeFragment fragment1 = new HomeFragment();
+        FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+        ft1.replace(R.id.content,fragment1,"");
+        ft1.commit();
 
     }
 
+private  BottomNavigationView.OnNavigationItemSelectedListener selectedListener  = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        //Lidando com o click do item no menu
 
+        switch (menuItem.getItemId()){
+            case R.id.home:
+                actionBar.setTitle("Home");
+                HomeFragment fragment1 = new HomeFragment();
+                FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+                ft1.replace(R.id.content,fragment1,"");
+                ft1.commit();
+                return true;
+            case R.id.users:
+                actionBar.setTitle("Amigos");
+                UsersFragment fragment3 = new UsersFragment();
+                FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
+                ft3.replace(R.id.content,fragment3,"");
+                ft3.commit();
+                return true;
+
+            case R.id.profile:
+                actionBar.setTitle("Perfil");
+                ProfileFragment fragment2 = new ProfileFragment();
+                FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+                ft2.replace(R.id.content,fragment2,"");
+                ft2.commit();
+                return true;
+
+            case R.id.event:
+                actionBar.setTitle("Eventos");
+                EventFragment fragment4 = new EventFragment();
+                FragmentTransaction ft4 = getSupportFragmentManager().beginTransaction();
+                ft4.replace(R.id.content,fragment4,"");
+                ft4.commit();
+                return true;
+        }
+
+
+        return false;
+    }
+};
 
 
     private  void checkUserStatus(){
@@ -50,7 +105,6 @@ public class Perfil extends AppCompatActivity {
             //usuário está conectado fique aqui!
 
             // mudando email de usuario logado
-            perfil.setText(user.getEmail());
 
         }else{
             //usuario nao conectado , ir para atividadeprincipal>Menu

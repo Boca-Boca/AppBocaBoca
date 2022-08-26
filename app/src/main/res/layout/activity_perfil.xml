@@ -7,15 +7,31 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".Perfil">
-<!--Mostrar email do cliente logado -->
-    <TextView
-        android:id="@+id/Perfil"
-        android:text="Perfil"
-        android:textSize="30sp"
-        android:textColor="@color/design_default_color_on_primary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        ></TextView>
+
+
+
+    <!-- Framelayout : Mostrar Fragments-->
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+
+    <!-- Bottom Navigation: Show menu -->
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/navigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="?android:attr/windowBackground"
+    app:menu="@menu/menu_nav"
+    ></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
 
 </LinearLayout>
+
+

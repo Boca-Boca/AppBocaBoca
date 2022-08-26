@@ -102,4 +102,5 @@
         android:layout_centerHorizontal="true">
 
     </com.google.android.gms.common.SignInButton>
+
 </RelativeLayout>

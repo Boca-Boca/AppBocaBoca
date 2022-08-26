@@ -3,13 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/ic_account_black.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_cadastro.xml" value="0.21784420289855072" />
-        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_login.xml" value="0.10126582278481013" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_perfil.xml" value="0.21784420289855072" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_event.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_home.xml" value="0.20516304347826086" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_users.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/menu/menu_main.xml" value="0.25" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/menu/menu_nav.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

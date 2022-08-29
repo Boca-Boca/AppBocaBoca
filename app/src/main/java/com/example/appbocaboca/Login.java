@@ -130,7 +130,7 @@ ProgressDialog pd;
             @Override
             public void onClick(View v) {
             startActivity(new Intent(Login.this,Cadastro.class));
-            }
+            finish();}
         });
 
         //recuperação da senha
@@ -173,7 +173,7 @@ ProgressDialog pd;
             }
         });
         //Butoes cancelar
-        builder.setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //dialogo cancel

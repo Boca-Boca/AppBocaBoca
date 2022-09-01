@@ -19,7 +19,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Perfil"
+            android:name=".DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

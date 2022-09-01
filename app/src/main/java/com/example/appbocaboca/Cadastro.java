@@ -3,7 +3,6 @@ package com.example.appbocaboca;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -150,10 +149,9 @@ public class Cadastro extends AppCompatActivity {
                             //Colocando informacoes no hashmap
                             hashMap.put("email", email);
                             hashMap.put("uid", uid);
-                            hashMap.put("nome","" );   //vai adicionar depois
-                            hashMap.put("telefone", "");//vai adicionar depois
-                            hashMap.put("imagem", "");//vai adicionar depois
-
+                            hashMap.put("nome","" );   //vai adicionar depois (e.g edit profile)
+                            hashMap.put("telefone", "");//vai adicionar depois (e.g edit profile)
+                            hashMap.put("imagem", "");//vai adicionar depois (e.g edit profile)
 
                             //Intancia do Firebase database
 
@@ -163,14 +161,13 @@ public class Cadastro extends AppCompatActivity {
 
                             DatabaseReference reference = database.getReference("Users");
 
-
                             //colocar os dados no hashmap e no banco(database)
                             reference.child(uid).setValue(hashMap);
 
 
 
                             Toast.makeText(Cadastro.this, "Cadastrado...\n"+user.getEmail(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Cadastro.this, Perfil.class));
+                            startActivity(new Intent(Cadastro.this, DashboardActivity.class));
                             finish();
                         } else{
                             progressDialog.dismiss();
@@ -236,7 +233,7 @@ public class Cadastro extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(Cadastro.this, "Cadastrado"+user.getEmail(), Toast.LENGTH_SHORT).show();
                             // Vai para o perfil ativo depois de logar
-                            startActivity(new Intent(Cadastro.this, Perfil.class));
+                            startActivity(new Intent(Cadastro.this, DashboardActivity.class));
                             finish();
                            // updateUI(user);
                         }else{

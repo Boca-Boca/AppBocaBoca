@@ -1,18 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#009688"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="Profile" />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="180dp"
+           android:background="#31f4d5">
 
 
-</FrameLayout>
+       </RelativeLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="120dp"
+           android:layout_marginTop="100dp"
+           android:orientation="horizontal">
+
+
+           <ImageView
+               android:id="@+id/avataricon"
+               android:layout_width="120dp"
+               android:layout_height="120dp"
+               android:layout_marginStart="20dp"
+               android:layout_marginLeft="20dp"
+               android:background="#7bffd5"
+               android:padding="5dp"
+               android:src="@drawable/ic_add_image" />
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+
+               <TextView
+                   android:id="@+id/nameTv"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginLeft="5dp"
+                   android:layout_marginTop="6dp"
+                   android:text="Nome"
+                   android:textColor="#fffffa"
+                   android:textSize="25sp" />
+
+               <TextView
+                   android:id="@+id/emailTv"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginLeft="5dp"
+                   android:text="Email"
+                   android:textColor="#fffffa" />
+
+               <TextView
+                   android:id="@+id/telefoneTv"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginLeft="5dp"
+                   android:text="Telefone"
+                   android:textColor="#fffffa" />
+
+           </LinearLayout>
+       </LinearLayout>
+
+   </RelativeLayout>
+
+
+</ScrollView>

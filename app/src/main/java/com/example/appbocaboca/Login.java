@@ -6,14 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,25 +38,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
-//Sempre declara o componente primeiro depois referencia/intancia
-    //Views/Componentes
-    EditText Email, Senha;
-    TextView naotemconta, esqueciSenha;
-     Button loginbtn;
-    SignInButton mGoogleLoginBtn;
-
-
-    private static final int RC_SIGN_IN = 100 ;
+    private static final int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
+    //Sempre declara o componente primeiro depois referencia/intancia
+    //Views/Componentes
 
-
-
-     //Declarando instancia do Firebase
+    EditText Email, Senha;
+    TextView naotemconta , esqueceiSenha;
+    Button loginbtn;
+    SignInButton mGoogleLoginBtn;
+    //Declarando instancia do Firebase
     private FirebaseAuth mAuth;
 
 
     //Progress dialog pra mostrar mensagens
-ProgressDialog pd;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,15 +62,14 @@ ProgressDialog pd;
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setTitle("Entrar");
-
-
-
-            // Configuração do google sign in
+        // Configuração do google sign in
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
+        mAuth = FirebaseAuth.getInstance();
+
 
         //Inicializando uma instancia do Firebase
         mAuth = FirebaseAuth.getInstance();
@@ -89,21 +81,9 @@ ProgressDialog pd;
         Email = findViewById(R.id.emailEt);
         Senha = findViewById(R.id.senhaEt);
         naotemconta= findViewById((R.id.nao_tem_conta));
-        esqueciSenha=findViewById((R.id.esqueceuSenha));
+        esqueceiSenha=findViewById((R.id.esqueceuSenha));
         loginbtn = findViewById(R.id.btnlogin);
         mGoogleLoginBtn = findViewById(R.id.googleLoginBtn);
-
-
-
-        // Lidando com o botão do google
-        mGoogleLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent,RC_SIGN_IN);
-            }
-        });
-
 
         //Clique do botao Login
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -125,16 +105,25 @@ ProgressDialog pd;
             }
         });
 
+        mGoogleLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent,RC_SIGN_IN);
+            }
+        });
+
+
         //Nao tem uma conta textview click
         naotemconta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            startActivity(new Intent(Login.this,Cadastro.class));
-            }
-        });
+                startActivity(new Intent(Login.this,Cadastro.class));
+            finish();}
 
+        });
         //recuperação da senha
-        esqueciSenha.setOnClickListener(new View.OnClickListener() {
+        esqueceiSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showRecoverPasswordDialog();
@@ -151,7 +140,7 @@ ProgressDialog pd;
         builder.setTitle("Recuperar a senha!");
 
         //set layout linear layout
-        LinearLayout linearLayout = new LinearLayout(this);
+        RelativeLayout linearLayout = new RelativeLayout(this);
         // views setadas no dialogo
         EditText emailEt = new EditText(this);
         emailEt.setHint("Email");
@@ -173,7 +162,7 @@ ProgressDialog pd;
             }
         });
         //Butoes cancelar
-        builder.setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //dialogo cancel
@@ -211,9 +200,7 @@ ProgressDialog pd;
     }
 
     private void loginUser(String email, String senha) {
-    //Mostrar progress dialog
-        pd.setMessage("Entrando...");
-        pd.show();
+        //Mostrar progress dialog
         mAuth.signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -228,14 +215,14 @@ ProgressDialog pd;
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             //Usuario logado então iniciar atividade
-                            startActivity(new Intent(Login.this,Perfil.class));
+                            startActivity(new Intent(Login.this, DashboardActivity.class));
                             finish();
 
                         }else{
                             //Fechar barra de progesso
-                             pd.dismiss();
+                            pd.dismiss();
 
-                             //Se falhar mandar uma mensagem para o usuário
+                            //Se falhar mandar uma mensagem para o usuário
                             Toast.makeText(Login.this, "Autenticação falhou",
                                     Toast.LENGTH_SHORT).show();
 
@@ -256,8 +243,8 @@ ProgressDialog pd;
 
 
         //Iniciar/Instanciar Progress dialog
-   pd= new ProgressDialog(this);
-   pd.setMessage("Entrando...");
+        pd= new ProgressDialog(this);
+        pd.setMessage("Entrando...");
     }
 
     @Override
@@ -265,7 +252,6 @@ ProgressDialog pd;
         onBackPressed(); //Ir para atividade anterior
         return super.onSupportNavigateUp();
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode , Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
@@ -284,7 +270,6 @@ ProgressDialog pd;
 
     }
 
-
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         //here the acct.getIdToken() is null
@@ -294,9 +279,12 @@ ProgressDialog pd;
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
+                        if (task.isSuccessful()) {
 
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //Pegar o email do usuario e o Uid pela autenticacao
+
                             String email = user.getEmail();
 
                             String uid = user.getUid();
@@ -307,10 +295,9 @@ ProgressDialog pd;
                             //Colocando informacoes no hashmap
                             hashMap.put("email", email);
                             hashMap.put("uid", uid);
-                            hashMap.put("nome","" );   //vai adicionar depois
-                            hashMap.put("telefone", "");//vai adicionar depois
-                            hashMap.put("imagem", "");//vai adicionar depois
-
+                            hashMap.put("nome","" );   //vai adicionar depois (e.g edit profile)
+                            hashMap.put("telefone", "");//vai adicionar depois (e.g edit profile)
+                            hashMap.put("imagem", "");//vai adicionar depois (e.g edit profile)
 
                             //Intancia do Firebase database
 
@@ -320,19 +307,16 @@ ProgressDialog pd;
 
                             DatabaseReference reference = database.getReference("Users");
 
-
                             //colocar os dados no hashmap e no banco(database)
                             reference.child(uid).setValue(hashMap);
 
-
-
-
-                            Toast.makeText(Login.this, "Cadastrado" + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             // Vai para o perfil ativo depois de logar
-                            startActivity(new Intent(Login.this, Perfil.class));
+                            startActivity(new Intent(Login.this, DashboardActivity.class));
+                            Toast.makeText(Login.this, "Bem Vindo", Toast.LENGTH_SHORT).show();
                             finish();
                             // updateUI(user);
-                        } else {
+                        }else{
                             Toast.makeText(Login.this, "Erro no Login", Toast.LENGTH_SHORT).show();
                         }
 
@@ -342,9 +326,9 @@ ProgressDialog pd;
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         //Mostrar erro de mensagem
-                        Toast.makeText(Login.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
 }
-

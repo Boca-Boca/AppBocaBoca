@@ -130,7 +130,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        pd=new ProgressDialog(this);
+        pd= new ProgressDialog(this);
 
     }
 
@@ -283,32 +283,41 @@ public class Login extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            //Pegar o email do usuario e o Uid pela autenticacao
+                            //Se o usuario estiver logado pela primeria vez entao pegar as informações da conta do google
+                            if(task.getResult().getAdditionalUserInfo().isNewUser()){
 
-                            String email = user.getEmail();
+                                //Pegar o email do usuario e o Uid pela autenticacao
 
-                            String uid = user.getUid();
+                                String email = user.getEmail();
 
-                            //Quando o usuario e registrado armazenar as info no firebase realtime database tambem
-                            //Usando Hashmap
-                            HashMap<Object, String> hashMap= new HashMap<>();
-                            //Colocando informacoes no hashmap
-                            hashMap.put("email", email);
-                            hashMap.put("uid", uid);
-                            hashMap.put("nome","" );   //vai adicionar depois (e.g edit profile)
-                            hashMap.put("telefone", "");//vai adicionar depois (e.g edit profile)
-                            hashMap.put("imagem", "");//vai adicionar depois (e.g edit profile)
+                                String uid = user.getUid();
 
-                            //Intancia do Firebase database
+                                //Quando o usuario e registrado armazenar as info no firebase realtime database tambem
+                                //Usando Hashmap
+                                HashMap<Object, String> hashMap= new HashMap<>();
+                                //Colocando informacoes no hashmap
+                                hashMap.put("email", email);
+                                hashMap.put("uid", uid);
+                                hashMap.put("nome","" );   //vai adicionar depois (e.g edit profile)
+                                hashMap.put("telefone", "");//vai adicionar depois (e.g edit profile)
+                                hashMap.put("imagem", "");//vai adicionar depois (e.g edit profile)
 
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                //Intancia do Firebase database
 
-                            //Caminho pro armazenamento de dados do usuario chamado "Users"
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                            DatabaseReference reference = database.getReference("Users");
+                                //Caminho pro armazenamento de dados do usuario chamado "Users"
 
-                            //colocar os dados no hashmap e no banco(database)
-                            reference.child(uid).setValue(hashMap);
+                                DatabaseReference reference = database.getReference("Users");
+
+                                //colocar os dados no hashmap e no banco(database)
+                                reference.child(uid).setValue(hashMap);
+
+
+                            }
+
+
+
 
                             Toast.makeText(Login.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             // Vai para o perfil ativo depois de logar

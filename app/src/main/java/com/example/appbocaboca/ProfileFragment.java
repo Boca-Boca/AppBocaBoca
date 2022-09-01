@@ -2,11 +2,24 @@ package com.example.appbocaboca;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +27,19 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+
+    //FIREBASEAUTH
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
+ // Componentes views xml
+    ImageView avatar;
+    TextView nameT, emailT, telefoneT;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +84,69 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+
+       //iniciar Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth .getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Users");
+
+        // Iniciar as views
+        avatar = view.findViewById(R.id.avataricon);
+        emailT = view.findViewById(R.id.emailTv);
+        telefoneT = view.findViewById(R.id.telefoneTv);
+        nameT = view.findViewById(R.id.nameTv);
+
+
+        /*Nos temos que conseguir informações do usuario logado.
+        * Conseguimos isso usando o email ou o uid, aqui nos usaremos o email
+        * Usando a query orderByChild nos vamos mostrar os detalhes de um nó o
+        * qual a chave chamada email tem valor igual ao email logado.
+        * Vai procurar todos os nós , onde a chave combina combina vai pegar os detalhes*/
+
+        Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+             //checar até obter os dados necessários
+               for(DataSnapshot ds: snapshot.getChildren()){
+                //get data
+                   String name =""+ ds.child("nome").getValue();
+                   String email =""+ ds.child("email").getValue();
+                   String telefone =""+ ds.child("telefone").getValue();
+                   String imagem =""+ ds.child("imagem").getValue();
+                //set data
+
+                   nameT.setText("name");
+                   emailT.setText("email");
+                   telefoneT.setText("telefone");
+                   try {
+                    //Se a imagem for recebida entao mudar
+                       Picasso.get().load(imagem).into(avatar);
+
+                   }catch (Exception e){
+
+                       //Se tiver uma exception enquanto conseguir a  imagem entao definir uma imagem default
+                       Picasso.get().load(R.drawable.ic_add_image).into(avatar);
+
+                   }
+
+
+               }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return view;
     }
 }

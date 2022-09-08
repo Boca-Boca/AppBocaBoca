@@ -76,7 +76,7 @@ public class Perfil<selectedListener> extends AppCompatActivity {
     }
 
 
-    //Menu de opção inflte sla oq e issu
+    //Menu de opção inflte
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {

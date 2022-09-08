@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/accounticon.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/addbutton.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/ic_default_img.xml" value="0.117" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/ic_event_black.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/ic_home_black.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/ic_profile_black.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-anydpi/ic_users_black.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_cadastro.xml" value="0.21784420289855072" />
@@ -14,8 +20,9 @@
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/activity_perfil.xml" value="0.21784420289855072" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_event.xml" value="0.15104166666666666" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_home.xml" value="0.176" />
-        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_profile.xml" value="0.536" />
-        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_users.xml" value="0.15104166666666666" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/fragment_users.xml" value="0.264" />
+        <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/layout/row_users.xml" value="0.6" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/menu/menu_nav.xml" value="0.264" />
         <entry key="..\:/Apps/AppBocaBoca/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />

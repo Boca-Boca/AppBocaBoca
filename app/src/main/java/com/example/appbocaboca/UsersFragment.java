@@ -94,8 +94,8 @@ public class UsersFragment extends Fragment {
 
          //Instanciar lista de usuarios userlis*
         usersList = new ArrayList<>();
-        //Pegar todos os usuarios
 
+        //Pegar todos os usuarios
         getAllUsers();
 
 
@@ -119,8 +119,8 @@ public class UsersFragment extends Fragment {
                             ModelUsers modelUser = ds.getValue(ModelUsers.class);
 
                             //Pegar todos os usuarios exeto o usuario logado
-                            if(!modelUser.getUid().equals(fUser)){
-                                usersList.add((modelUser));
+                            if(!modelUser.getUid().equals(fUser.getUid())){
+                                usersList.add(modelUser);
                             }
 
                             //Adapter
@@ -143,4 +143,3 @@ public class UsersFragment extends Fragment {
         }
 }
 
-//Model class recyclerView

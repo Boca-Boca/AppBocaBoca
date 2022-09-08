@@ -70,7 +70,6 @@ try {
      }) ;
 
 
-
     }
 
 
@@ -100,8 +99,8 @@ try {
 
             //instanciar as Views
         Avatartv = itemView.findViewById(R.id.avatarIv);
-        NomeTv = itemView.findViewById(R.id.nameTv);
-        EmailTv = itemView.findViewById(R.id.emailTv);
+        NomeTv = itemView.findViewById(R.id.nameT);
+        EmailTv = itemView.findViewById(R.id.emailT);
 
 
 

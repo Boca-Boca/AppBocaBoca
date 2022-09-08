@@ -29,7 +29,7 @@
          android:orientation="vertical">
 
       <TextView
-          android:id="@+id/nameTb"
+          android:id="@+id/nameT"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Nome da pessoa"
@@ -37,7 +37,7 @@
           android:textColor="@color/black"/>
 
          <TextView
-             android:id="@+id/nameTv"
+             android:id="@+id/emailT"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Email da pessoa"

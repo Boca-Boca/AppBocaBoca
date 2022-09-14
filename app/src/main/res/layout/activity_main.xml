@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009688"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+
+    <!-- Botao de cadastro -->
+
+
+    <!-- Botao de Login -->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="151dp"
+        android:layout_height="377dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginEnd="126dp"
+        android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/btnCadastro"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="#12615A"
+        android:drawableLeft="@drawable/addbutton"
+        android:drawablePadding="5dp"
+        android:text="Cadastre-se" />
+
+    <Button
+
+        android:id="@+id/btnLogin"
+
+
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="261dp"
+        android:backgroundTint="#12615A"
+        android:drawableLeft="@drawable/accounticon"
+        android:drawablePadding="5dp"
+        android:text="Entrar" />
+
+</RelativeLayout>

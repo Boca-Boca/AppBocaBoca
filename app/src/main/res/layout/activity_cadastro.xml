@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009688"
+    android:padding="20dp"
+    tools:context=".Cadastro">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:src="@drawable/logo" />
+
+    <!-- TextView : Label de Cadastro-->
+
+    <!-- TextView : Editando o Texto : Input email-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastro"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/emailTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+
+        <EditText
+            android:id="@+id/emailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Editar o input de senha-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/senhaTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/emailTIL"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
+        app:passwordToggleEnabled="true">
+
+
+        <EditText
+            android:id="@+id/senhaEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Senha"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Editar Botao de Cadastro-->
+    <Button
+        android:id="@+id/btnCadastrar"
+        style="@style/Base.CardView"
+        android:layout_width="131dp"
+        android:layout_height="69dp"
+        android:layout_below="@+id/senhaTIL"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#12615A"
+        android:text="cadastrar" />
+
+    <!--Clique para ir para a atividade de Login se ja tiver uma conta-->
+    <TextView
+
+        android:id="@+id/tem_conta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCadastrar"
+        android:layout_marginTop="5dp"
+        android:text="Já tem uma conta? Entrar"
+        android:textAlignment="center"
+        android:textColor="@color/black" />
+
+    <!-- Botão do google-->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googleLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tem_conta"
+        android:layout_centerHorizontal="true">
+
+    </com.google.android.gms.common.SignInButton>
+</RelativeLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "400372720301",
+    "project_id": "projetobocaboca",
+    "storage_bucket": "projetobocaboca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400372720301:android:24f68def651328b7ac1c24",
+        "android_client_info": {
+          "package_name": "com.example.appbocaboca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400372720301-akrctm7q6dme3lt1vp6ag72bgi4umolf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4i3ZdOePraQUZ0xnyUo9YED1xgI_X8Xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400372720301-akrctm7q6dme3lt1vp6ag72bgi4umolf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

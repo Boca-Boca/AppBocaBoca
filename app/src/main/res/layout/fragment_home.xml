@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009688"
+    android:padding="20dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo" />
+    <EditText
+        android:id="@+id/pesquisa"
+        android:hint="Pesquisar..."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp">
+    </EditText>
+    <LinearLayout
+        android:layout_below="@+id/pesquisa"
+        android:paddingHorizontal="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/restaurante"
+            android:layout_marginEnd="20dp"
+            android:text="Restaurante"
+            android:layout_below="@+id/pesquisa"
+            android:background="@drawable/restaurante"
+            android:layout_width="150dp"
+            android:layout_height="130dp">
+        </ImageButton>
+        <ImageButton
+            android:layout_toRightOf="@+id/restaurante"
+            android:id="@+id/bar"
+            android:text="Bar"
+            android:layout_below="@+id/pesquisa"
+            android:background="@drawable/bar"
+            android:layout_width="150dp"
+            android:layout_height="130dp">
+        </ImageButton>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/pesquisa"
+        android:layout_marginTop="140dp"
+        android:paddingHorizontal="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/quiosque"
+            android:layout_marginEnd="20dp"
+            android:text="Quiosque"
+            android:layout_below="@+id/restaurante"
+            android:backgroundTint="@color/material_on_surface_stroke"
+            android:layout_width="150dp"
+            android:layout_height="130dp">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/foodtruck"
+            android:text="Foodtruck"
+            android:layout_below="@+id/restaurante"
+            android:background="@drawable/foodtruck"
+            android:layout_width="150dp"
+            android:layout_height="130dp">
+        </ImageButton>
+
+    </LinearLayout>
+
+</RelativeLayout>

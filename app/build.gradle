@@ -45,5 +45,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.google.firebase:firebase-storage'
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+
 
 }

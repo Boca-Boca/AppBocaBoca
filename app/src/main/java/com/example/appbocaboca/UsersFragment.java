@@ -238,8 +238,8 @@ public class UsersFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
 
-
-menu.findItem(R.id.action_add_post).setVisible(false);
+//Esconder o boatao de adicionar o post nesse fragmento
+    menu.findItem(R.id.action_add_post).setVisible(false);
 
 
         inflater.inflate(R.menu.menu_main, menu);
